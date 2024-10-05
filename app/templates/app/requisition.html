@@ -1,0 +1,91 @@
+{% extends "app/dashboard.html" %}
+{% load crispy_forms_tags %}
+{% block maincontent %}
+<div class="contents">
+    <div class="table-area">
+        <form action="" method="GET" enctype="multipart/form-data" autocomplete="off" id="yourForm">
+            {% csrf_token %}
+            <div class="accordion-item">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0 fw-bold"> 
+                            Sample Requisition Add 
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div id="div_id_style" class="mb-3">
+                                    {{ form|crispy }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+         <div class="table-header"  id="style-details">
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#id_style').change(function() {
+            var styleId = $(this).val();
+            if (styleId) {
+                $.ajax({
+                    url: '{% url "getStyleData" %}',
+                    data: {
+                        'style_id': styleId
+                    },
+                    success: function(data) {
+                        var detailsHtml = `
+                            <div class="row my-3">
+                                <div class="col-md-12 text-center" style="background-color: #bbefe3;">
+                    <p class="p-2 fw-bold ">ITEM WISE MATERIAL DELIVERY DETAILS</p>
+                </div>
+                <div class="tables table-responsive" id="styleList">
+                    <table class="table  table-striped table-hover align-middle" style="margin-top: 20px;">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col" style="vertical-align: middle; width: 20px;height: 40px;">Style Number</th>
+                                <th class="text-center" scope="col">Style Description</th>
+                                
+                                <th class="text-center" scope="col">Fabric Name</th>
+                                <th class="text-center" scope="col">Accessories Name</th>
+                                
+                                <th class="text-center" scope="col">Fabric Consumption</th>
+                                <th class="text-center" scope="col">Wash Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr>
+                                    <td class="col-md-3">${data.style_no}</td>
+                                    <td class="">${data.style_desc}</td>
+                                    <td class="">${data.fabric_name}</td>
+                                    <td class="">${data.accessories_name}</td>
+                                    <td class="">${data.fabric_consumption}</td>
+                                    <td class="">${data.wash_cost}</td>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+                            </div>
+                        `;
+                        $('#style-details').html(detailsHtml);
+                    },
+                    error: function(xhr, status, error) {
+                        $('#style-details').html('<p style="color: red;">Error fetching data. Please try again.</p>');
+                    }
+                });
+            } else {
+                $('#style-details').html('');
+            }
+        });
+    });
+</script>
+{% endblock  %}

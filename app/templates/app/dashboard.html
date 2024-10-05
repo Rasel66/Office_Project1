@@ -1,0 +1,389 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <!-- Meta Tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Responsive, Multipurpose, one page, Portfolio, Business">
+    <meta name="description" content="Responsive HTML Business Template">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- CSS style  links-->
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/apexcharts.css" %}">
+    <link rel="stylesheet" href="{% static "css/select2.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="{% static "css/responsive.css" %}">
+</head>
+
+<body>
+    <!-- loader -->
+    <div class="loaders">
+        <div class="loader"></div>
+    </div>
+    <!-- loader -->
+
+
+    <!-- main-area -->
+    <section class="main-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 p-0">
+                    <!-- menu -->
+                    <div class="menu-area fixed-menu">
+                        <div class="closes"><i class="fa fa-times" aria-hidden="true"></i></div>
+
+                        <!-- logo -->
+                        <div class="logo desktop-view">
+                            <a href="dashboard.html">
+                                <img class="small-logo" src="{% static "img/logo-s.png" %}" alt="logo">
+                                <img class="big-logo" src="{% static "img/logo.png" %}" alt="logo">
+                            </a>
+                        </div>
+                        <!-- logo -->
+                        <!-- user -->
+                        <div class="user">
+                            <img class="img-fluid" src="{% static "img/user.png" %}" alt="">
+                            <h4>HOLOPZD ANBEPZD</h4>
+                            <p><span class="dot"></span> admin</p>
+                        </div>
+                        <!-- user -->
+                        <nav class="menu">
+                            <ul>
+                                <li><a class="active" href="/"><i class="fa fa-star" aria-hidden="true"></i> <span class="hide-item">Styles </span></a></li>
+                                <li><a href="{% url 'requisition' %}"><i class="fa fa-user-plus" aria-hidden="true"></i> <span class="hide-item">Requisition </span></a></li>
+                                
+
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- menu -->
+
+
+                    <!-- main-contents -->
+                    <div class="main-contents">
+
+                        <!-- logo -->
+                        <div class="logo mobile-view">
+                            <a href="app/dashboard.html">
+                                <img class="small-logo" src="{% static "img/logo-s.png" %}" alt="logo">
+                                <img class="big-logo" src="{% static "/img/logo.png" %}" alt="logo">
+                            </a>
+                        </div>
+                        <!-- logo -->
+
+
+                        <!-- header-area -->
+                        <div class="header-area">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="title">
+                                        <h2> <span class="mob"><i class="fa fa-bars" aria-hidden="true"></i></span>
+                                            <span class="menuwidth"><i class="fa fa-bars" aria-hidden="true"></i></span> </h2>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="notification">
+                                        <ul>
+                                            <li class="dropdown notifica">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="num">0</span> </a>
+
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+
+                                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+
+
+                                                    <li class="footer"><a href="#">See All Messages</a></li>
+                                                </ul>
+
+
+                                            </li>
+                                            <li class="dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="fa fa-cog" aria-hidden="true"></i> </a>
+
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                                    <li><a class="dropdown-item" href="#"><i class="fa fa-user" aria-hidden="true"></i> profile</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i> Setting</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> logout</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- header-area -->
+
+
+                        <!-- dashboard-grids -->
+                         <div class="background-class">
+                            {% block maincontent %}
+
+                            {% endblock %}
+                         </div>
+                        <!-- dashboard-grids -->
+                    </div>
+                    <!-- main-contents -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- main-area -->
+
+
+
+    <!-- Js script links-->
+    <script src="{% static "js/jquery-3.6.0.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+    <script src="{% static "js/apexcharts.min.js" %}"></script>
+    <script src="{% static "js/script.js" %}"></script>
+
+    <script>
+        var options = {
+            series: [44, 55, 41, 17, 15],
+            chart: {
+                type: 'donut',
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+
+
+
+
+
+
+
+
+        var options = {
+            series: [{
+                name: 'series1',
+                data: [31, 40, 28, 51, 42, 109, 100]
+            }, {
+                name: 'series2',
+                data: [11, 32, 45, 32, 34, 52, 41]
+            }],
+            chart: {
+                height: 350,
+                type: 'area'
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                type: 'datetime',
+                categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+            },
+            tooltip: {
+                x: {
+                    format: 'dd/MM/yy HH:mm'
+                },
+            },
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart2"), options);
+        chart.render();
+
+
+
+
+
+        var options = {
+            series: [{
+                name: 'Inflation',
+                data: [2.3, 3.1, 4.0, 10.1, 4.0, 3.6, 3.2, 2.3, 1.4, 0.8, 0.5, 0.2]
+            }],
+            chart: {
+                height: 350,
+                type: 'bar',
+            },
+            plotOptions: {
+                bar: {
+                    borderRadius: 10,
+                    dataLabels: {
+                        position: 'top', // top, center, bottom
+                    },
+                }
+            },
+            dataLabels: {
+                enabled: true,
+                formatter: function(val) {
+                    return val + "%";
+                },
+                offsetY: -20,
+                style: {
+                    fontSize: '12px',
+                    colors: ["#304758"]
+                }
+            },
+
+            xaxis: {
+                categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                position: 'top',
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false
+                },
+                crosshairs: {
+                    fill: {
+                        type: 'gradient',
+                        gradient: {
+                            colorFrom: '#D8E3F0',
+                            colorTo: '#BED1E6',
+                            stops: [0, 100],
+                            opacityFrom: 0.4,
+                            opacityTo: 0.5,
+                        }
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                }
+            },
+            yaxis: {
+                axisBorder: {
+                    show: false
+                },
+                axisTicks: {
+                    show: false,
+                },
+                labels: {
+                    show: false,
+                    formatter: function(val) {
+                        return val + "%";
+                    }
+                }
+
+            },
+            title: {
+                text: 'Monthly Inflation in Argentina, 2002',
+                floating: true,
+                offsetY: 330,
+                align: 'center',
+                style: {
+                    color: '#444'
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart3"), options);
+        chart.render();
+
+
+
+        var options = {
+            series: [{
+                name: 'TEAM A',
+                type: 'column',
+                data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
+            }, {
+                name: 'TEAM B',
+                type: 'area',
+                data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
+            }, {
+                name: 'TEAM C',
+                type: 'line',
+                data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
+            }],
+            chart: {
+                height: 350,
+                type: 'line',
+                stacked: false,
+            },
+            stroke: {
+                width: [0, 2, 5],
+                curve: 'smooth'
+            },
+            plotOptions: {
+                bar: {
+                    columnWidth: '50%'
+                }
+            },
+
+            fill: {
+                opacity: [0.85, 0.25, 1],
+                gradient: {
+                    inverseColors: false,
+                    shade: 'light',
+                    type: "vertical",
+                    opacityFrom: 0.85,
+                    opacityTo: 0.55,
+                    stops: [0, 100, 100, 100]
+                }
+            },
+            labels: ['01/01/2003', '02/01/2003', '03/01/2003', '04/01/2003', '05/01/2003', '06/01/2003', '07/01/2003',
+                '08/01/2003', '09/01/2003', '10/01/2003', '11/01/2003'
+            ],
+            markers: {
+                size: 0
+            },
+            xaxis: {
+                type: 'datetime'
+            },
+            yaxis: {
+                title: {
+                    text: 'Points',
+                },
+                min: 0
+            },
+            tooltip: {
+                shared: true,
+                intersect: false,
+                y: {
+                    formatter: function(y) {
+                        if (typeof y !== "undefined") {
+                            return y.toFixed(0) + " points";
+                        }
+                        return y;
+
+                    }
+                }
+            }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart4"), options);
+        chart.render();
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+<!-- Js script links-->
+
+<!-- Js script links-->
+
+</body>
+
+</html>

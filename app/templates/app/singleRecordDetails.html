@@ -1,0 +1,116 @@
+{% extends "app/dashboard.html" %}
+
+{% block maincontent %}
+
+<div class="contents">
+    <div class="table-area">
+     <div class="table-title">
+      <div class="card mt-2">
+          <div class="bg-light card-header fw-bold">
+          Materials Details
+       
+           <a href="/merchant/query/costing/preview/139"> 
+                <button  style="float: right; background-color: #ff9a00 !important" id="mother-rganization" class="cus-btn right"  type="button" name="button">
+                    
+                     Costing
+                    <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                </button>
+            </a>
+          </div>
+      <div class="table-header">
+      <div class="row">
+        <div class="col-md-6 ">
+            <table class="table table-bordered">
+              <tbody>
+      
+                <tr>
+                    <th scope="row" class="fw-bold">Style Number</th>
+                    <td>{{ records.style_no|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Style Description</th>
+                    <td>{{ records.style_desc|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Enquiry Date</th>
+                    <td>{{ records.enquiry_date|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Fabric Name</th>
+                    <td>{{ records.fabric_name|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Fabric Composition</th>
+                    <td>{{ records.fabric_consumption|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Fabric Cost</th>
+                    <td>{{ records.fabric_cost|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Accessories Name</th>
+                    <td>{{ records.accessories_name|default:"N/A" }}</td>
+                </tr>
+                
+              </tbody>
+            </table>
+          </div>
+        <div class="col-md-6 ">
+          <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <th scope="row" class="fw-bold">Accessories Consumption</th>
+                    <td>{{ records.accessories_consumption|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Accessories Cost</th>
+                    <td>{{ records.accessories_cost|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Wash Plant Name</th>
+                    <td>{{ records.wash_plant_name|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Wash Cost</th>
+                    <td>{{ records.wash_cost|default:"N/A" }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Techpack</th>
+                    <td>
+                        {% if records.techpack %}  <!-- Assuming records.techpack contains the URL -->
+                            <a href="{{ records.techpack.url }}" target="_blank">Download</a>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Minimarker</th>
+                    <td>
+                        {% if records.mini_market %}  <!-- Assuming records.minimarker contains the URL -->
+                            <a href="{{ records.mini_market.url }}" target="_blank">Download</a>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" class="fw-bold">Consumption</th>
+                    <td>
+                        {% if records.composition %}  <!-- Assuming records.consumption contains the URL -->
+                            <a href="{{ records.composition.url }}" target="_blank">Download</a>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                </tr>
+                
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}

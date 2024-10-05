@@ -1,0 +1,116 @@
+{% extends "app/dashboard.html" %}
+{% load crispy_forms_tags %}
+
+{% block maincontent %}
+
+<div class="contents">
+    <div class="table-area">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="style-name">
+                        <h4>Update Style</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form action="" method="POST" autocomplete="off" class="m-3" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-md-3">
+                    {{form.style_no|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.style_desc|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.fabric_name|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.fabric_consumption|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.fabric_cost|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.accessories_name|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.accessories_consumption|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.accessories_cost|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.wash_plant_name|as_crispy_field}}
+                </div>
+        
+                <div class="col-md-3">
+                    {{form.wash_cost|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.mini_market|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.techpack|as_crispy_field}}
+                </div>
+                <div class="col-md-3">
+                    {{form.composition|as_crispy_field}}
+                </div>
+            </div>
+            <div class="text-center pb-4">
+                <button type="submit" class="cus-btn">Update</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+{% comment %} <form action="" method="POST" autocomplete="off" class="m-3">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-3">
+            {{form.style_no|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.style_desc|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.fabric_name|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.fabric_consumption|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.fabric_cost|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.accessories_name|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.accessories_consumption|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.accessories_cost|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.wash_plant_name|as_crispy_field}}
+        </div>
+
+        <div class="col-md-3">
+            {{form.wash_cost|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.mini_market|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.techpack|as_crispy_field}}
+        </div>
+        <div class="col-md-3">
+            {{form.composition|as_crispy_field}}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form> {% endcomment %}
+{% endblock %}

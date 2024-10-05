@@ -1,0 +1,126 @@
+{% extends "app/dashboard.html" %}
+
+{% block maincontent %}
+<script>
+    function SweetDelete(e,href){
+    e.preventDefault()
+    var self = $(this)
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success',
+          
+        )
+        location.href = href
+    
+      }
+    })
+  }
+</script>
+<div class="contents">
+    <div class="table-area">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="style-name">
+                        <h4>Styles</h4>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="add-btn">
+                        <a href="{% url "createStyle" %}">
+                            <button class="cus-btn" id="mother-rganization" name="button" type="button">
+                                <i aria-hidden="true" class="fa fa-plus-circle"></i>
+                                Style
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-header">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="data-search">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="input-group search">
+                                <input class="form-control" id="searchStyle" placeholder="Search..." type="search" name="searchquery">
+                                <button name="search" type="submit" class="input-group-text" id="searchBtn"><i aria-hidden="true" class="fa fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tables table-responsive" id="styleList">
+            <table class="table  table-striped table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col" style="vertical-align: middle; width: 20px;height: 40px;">SL</th>
+                        <th class="text-center" scope="col" style="vertical-align: middle; width: 20px;height: 40px;">Style Description</th>
+                        <th class="text-center" scope="col">Style Number</th>
+                        
+                        <th class="text-center" scope="col">Fabric Name</th>
+                        <th class="text-center" scope="col">Accessories Name</th>
+                        
+                        <th class="text-center" scope="col">Enquiry Date</th>
+                        <th class="text-center" scope="col">Wash Cost</th>
+                        <th class="text-center" scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if records %}
+                    {% for record in records %}
+                        <tr>
+                            <td class="text-center">{{ forloop.counter }}</td>
+                            <td class="col-md-3">{{ record.style_desc|default:"N/A" }}</td>
+                            <td class="">{{ record.style_no|default:"N/A" }}</td>
+                            <td class="">{{ record.fabric_name|default:"N/A" }}</td>
+                            <td class="">{{ record.accessories_name|default:"N/A" }}</td>
+                            <td class="">{{ record.enquiry_date|default:"N/A" }}</td>
+                            <td class="">{{ record.wash_cost|default:"N/A" }}</td>
+                            <td class="">
+                                <ul class="action">
+                                    <li>
+                                        <a href="{% url 'singleDetails' record.id %}">
+                                            <i style="background-color:#5dbea3" aria-hidden="true" class="fa fa-info-circle" data-bs-toggle="tooltip" data-bs-placement="top" title="Details" data-bs-custom-class="custom-tooltip"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'updateDetails' record.id %}" type="button">
+                                            <i aria-hidden="true" class="fa fa-pencil"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'deleteSingleRecord' record.id %}" onclick="SweetDelete(event,this.href)">
+                                            <i aria-hidden="true" class="fa fa-trash"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="8" class="text-center">No records found.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- table-title -->
+
+{% endblock %}
